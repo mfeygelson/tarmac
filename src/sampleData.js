@@ -5,37 +5,23 @@ export default {
     },
     {
       name: "Job 2",
+      dependsOn: ["Job 1"],
       active: true
     },
     {
       name: "Job 3",
+      dependsOn: ["Job 1"],
       status: "Failed",
       active: true
     },
     {
       name: "Job 4",
+      dependsOn: ["Job 2", "Job 3"],
       status: "Succeeded"
     }, {
       name: "Job 5",
+      dependsOn: ["Job 4"],
       active: true
-    }
-  ],
-  dependencies: [
-    {
-      from: 1,
-      to: 0
-    }, {
-      from: 2,
-      to: 0
-    }, {
-      from: 3,
-      to: 1
-    }, {
-      from: 3,
-      to: 2
-    }, {
-      from: 4,
-      to: 3
     }
   ]
 }

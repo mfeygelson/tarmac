@@ -1,4 +1,4 @@
-export default function renderJobs({jobs, dependencies}) {
+export default function renderJobs({jobs}) {
   const color = status => {
     switch (status) {
       case "Succeeded": return "green"
@@ -12,6 +12,12 @@ export default function renderJobs({jobs, dependencies}) {
     height: 100,
     color: color(job.status)
   }))
+  const lookup = {}
+  jobs.forEach((job, i) => lookup[job.name] = i)
+  const dependencies = []
+  jobs.forEach((job, i) => job.dependsOn && job.dependsOn.forEach(dependency =>
+    dependencies.push({from: i, to: lookup[dependency]})
+  ))
   const layers = []
   traverse(treeOf(dependencies), (i, depth) =>
     layers[depth] = (layers[depth] || []).concat(boxes[i])
