@@ -25,6 +25,7 @@ export default function renderJobs({jobs}) {
   boxes.forEach(box => layers.some(layer => layer.includes(box)) || layers[0].push(box))
   let x = 150;
   for (let depth = 0; depth < layers.length; ++depth) {
+    layers[depth] = [...new Set(layers[depth])]
     for (let i = 0; i < layers[depth].length; ++i) {
       layers[depth][i].x = x
       layers[depth][i].y = 600/(layers[depth].length + 1) * (i + 1)
