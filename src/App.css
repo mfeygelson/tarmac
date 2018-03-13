@@ -1,0 +1,18 @@
+.animated {
+  animation: grow infinite 1.25s ease-in;
+}
+
+@keyframes grow {
+  to { transform: scale(1.125) translate(-5%, -5%); }
+}
+
+html, body { margin:0; padding:0; overflow:hidden }
+svg { position:fixed; top:0; left:0; height:100%; width:100% }
+
+a :hover {
+  cursor: pointer;
+}
+
+svg text {
+  cursor: default
+}
